@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SynthSundaySmackdown
+{
+    class Shadow_Scout : Synth
+    {
+        public Shadow_Scout(string name, int health, int attack)
+        {
+            this.name = "Shadow Scout";
+            this.health = 110;
+            this.attack = 30;
+        }
+    }
+}
