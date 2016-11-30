@@ -114,9 +114,9 @@ namespace SynthSundaySmackdown
             {
                 Console.WriteLine("PLAYER 1 HEALTH:" + playerOne.health + "      " + "PLAYER 2 HEALTH:" + playerTwo.health);
                 Console.WriteLine();
-                ChooseAttackPlayerOne();
+                playerOne.ChooseAttackType(playerTwo);
                 Console.WriteLine();
-                ChooseAttackPlayerTwo();
+                playerTwo.ChooseAttackType(playerOne);
                 Console.Clear();
                 TakeShortBreak();
             }
@@ -219,45 +219,7 @@ namespace SynthSundaySmackdown
                     PullUpClassInfo();
                     break;
             }
-        }
-
-        public void ChooseAttackPlayerOne()
-        {
-            Console.WriteLine(playerOne.name + " Type attack or ability to fight..");
-            string playerOneInput = Console.ReadLine().ToLower();
-            if (playerOneInput == "attack")
-            {
-                playerOne.PrimaryAttack(playerTwo);
-            }
-            else if (playerOneInput == "ability")
-            {
-                playerOne.SecondaryAttack(playerTwo);
-            }
-            else
-            {
-                DisplaySyntaxError();
-                ChooseAttackPlayerOne();
-            }
-        }
-
-        public void ChooseAttackPlayerTwo()
-        {
-            Console.WriteLine(playerTwo.name + " Type attack or ability to fight..");
-            string playerTwoInput = Console.ReadLine().ToLower();
-            if (playerTwoInput == "attack")
-            {
-                playerTwo.PrimaryAttack(playerOne);
-            }
-            else if (playerTwoInput == "ability")
-            {
-                playerTwo.SecondaryAttack(playerOne);
-            }
-            else
-            {
-                DisplaySyntaxError();
-                ChooseAttackPlayerOne();
-            }
-        }
+        } 
 
         private void InsertClassText()
         {
@@ -268,7 +230,7 @@ namespace SynthSundaySmackdown
             Console.WriteLine();
         }
 
-        private void DisplaySyntaxError()
+        public void DisplaySyntaxError()
         {
             Console.WriteLine("?SYNTAX ERROR");
             Console.WriteLine("Please enter a valid input..");

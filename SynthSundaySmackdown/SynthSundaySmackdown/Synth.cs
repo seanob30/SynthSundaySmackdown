@@ -24,5 +24,24 @@ namespace SynthSundaySmackdown
         {
 
         }
+        public void ChooseAttackType(Synth synth)
+        {
+            Console.WriteLine(name + " Type attack or ability to fight..");
+            string playerInput = Console.ReadLine().ToLower();
+            if (playerInput == "attack")
+            {
+                PrimaryAttack(synth);
+            }
+            else if (playerInput == "ability")
+            {
+                SecondaryAttack(synth);
+            }
+            else
+            {
+                Console.WriteLine("?SYNTAX ERROR");
+                Console.WriteLine("Please enter a valid input..");
+                ChooseAttackType(synth);
+            }
+        }
     }
 }
