@@ -70,18 +70,22 @@ namespace SynthSundaySmackdown
             switch(option)
             {
                 case ("grim reaper"):
+                case ("reaper"):
                     player = new Grim_Reaper();
                     Console.Clear();
                     break;
                 case ("battle medic"):
+                case ("medic"):
                     player = new Battle_Medic();
                     Console.Clear();
                     break;
                 case ("foot soldier"):
+                case ("soldier"):
                     player = new Foot_Soldier();
                     Console.Clear();
                     break;
                 case ("shadow scout"):
+                case ("scout"):
                     player = new Shadow_Scout();
                     Console.Clear();
                     break;
@@ -178,7 +182,7 @@ namespace SynthSundaySmackdown
             switch (classInfo)
             {
                 case "grim reaper":
-                    Console.WriteLine("HEALTH: 130 Hit Points");
+                    Console.WriteLine("HEALTH: 110 Hit Points");
                     Console.WriteLine("ATTACK: 25 Damage");
                     Console.WriteLine("ABILITY: Can inflict double damage, but then is incapacitated for a turn.");
                     Console.ReadKey();
@@ -186,7 +190,7 @@ namespace SynthSundaySmackdown
                     PullUpClassInfo();
                     break;
                 case "battle medic":
-                    Console.WriteLine("HEALTH: 200 Hit Points");
+                    Console.WriteLine("HEALTH: 175 Hit Points");
                     Console.WriteLine("ATTACK: 15 Damage");
                     Console.WriteLine("ABILITY: Heal 30 health points.");
                     Console.ReadKey();
@@ -194,7 +198,7 @@ namespace SynthSundaySmackdown
                     PullUpClassInfo();
                     break;
                 case "foot soldier":
-                    Console.WriteLine("HEALTH: 175 Hit Points");
+                    Console.WriteLine("HEALTH: 125 Hit Points");
                     Console.WriteLine("ATTACK: 20 Damage");
                     Console.WriteLine("ABILITY: Does not have an ability.");
                     Console.ReadKey();
@@ -202,7 +206,7 @@ namespace SynthSundaySmackdown
                     PullUpClassInfo();
                     break;
                 case "shadow scout":
-                    Console.WriteLine("HEALTH: 110 Hit Points");
+                    Console.WriteLine("HEALTH: 90 Hit Points");
                     Console.WriteLine("ATTACK: 30 Damage");
                     Console.WriteLine("ABILITY: Goes \"invisible\" for one turn; inflict 150% damage the following");
                     Console.WriteLine("turn."); 
