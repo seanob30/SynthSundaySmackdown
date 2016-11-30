@@ -12,7 +12,7 @@ namespace SynthSundaySmackdown
 
         {
             this.name = "Grim Reaper";
-            this.health = 130;
+            this.health = 110;
             this.attack = 25;
         }
     }

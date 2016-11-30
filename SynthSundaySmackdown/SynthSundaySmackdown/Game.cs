@@ -17,9 +17,9 @@ namespace SynthSundaySmackdown
             WelcomeScreen();
             DisplayUIMenu();
             ChoosePlayerNames();
-            //BeginSmackdown();
-            //AcknowledgeWinner();
-            //ShowRematchScreen();
+            BeginSmackdown();
+            AcknowledgeWinner();
+            ShowRematchScreen();
         }
 
         private void WelcomeScreen()
@@ -52,10 +52,8 @@ namespace SynthSundaySmackdown
             }
             else
             {
-                Console.WriteLine("?SYNTAX ERROR");
-                Console.WriteLine("Please enter a valid input..");
-                TakeOneSecondBreak();
-                Console.Clear();
+                DisplaySyntaxError();
+                DisplayUIMenu();
             }
         }
 
@@ -88,10 +86,7 @@ namespace SynthSundaySmackdown
                     Console.Clear();
                     break;
                 default:
-                    Console.WriteLine("?SYNTAX ERROR");
-                    Console.WriteLine("Please enter a valid input..");
-                    TakeOneSecondBreak();
-                    Console.Clear();
+                    DisplaySyntaxError();
                     return ChooseClass();
                    
             }
@@ -110,20 +105,64 @@ namespace SynthSundaySmackdown
 
         private void BeginSmackdown()
         {
-            while (playerOne.health >= 0 && playerTwo.health >= 0)
+            Console.WriteLine("           THE SMACKDOWN BEGINS!!");
+            while (playerOne.health > 0 && playerTwo.health > 0)
             {
-
+                Console.WriteLine("PLAYER 1 HEALTH:" + playerOne.health + "      " + "PLAYER 2 HEALTH:" + playerTwo.health);
+                Console.WriteLine();
+                Console.WriteLine(playerOne.name + " Press enter to attack..");
+                Console.ReadKey();
+                playerTwo.health -= playerOne.attack;
+                Console.WriteLine();
+                Console.WriteLine(playerTwo.name + " Press enter to attack..");
+                Console.ReadKey();
+                playerOne.health -= playerTwo.attack;
+                Console.Clear();
             }
         }
 
         private void AcknowledgeWinner()
         {
-            throw new NotImplementedException();
+            if(playerOne.health > playerTwo.health)
+            {
+                Console.WriteLine(playerOne.name + " SMACKED DOWN HARDER AND IS NOW THE CHAMPION!");
+            }
+            else if (playerTwo.health > playerOne.health)
+            {
+                Console.WriteLine(playerTwo.name + " SMACKED DOWN HARDER AND IS NOW THE CHAMPION!");
+            }
+            else
+            {
+                Console.WriteLine(playerOne.name + " " + playerTwo.name + " ARE AN EQUAL MATCH..NOBODY WINS!");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Press any key to continue..");
+            Console.ReadKey();
+            Console.Clear();
         }
 
         private void ShowRematchScreen()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("CONGRATULATIONS TO THE WINNER, WOULD YOU LIKE TO FIGHT AGAIN?");
+            Console.WriteLine();
+            Console.Write("Type rematch to fight again or exit to end the game: ");
+            string rematchinput = Console.ReadLine().ToLower();
+
+            if (rematchinput == "rematch")
+            {
+                Console.Clear();
+                RunGame();
+            }
+            else if (rematchinput == "exit")
+            {
+                Environment.Exit(0);
+            }
+            else
+            {
+                DisplaySyntaxError();
+                ShowRematchScreen();
+            }
         }
 
         private void PullUpClassInfo()
@@ -175,22 +214,27 @@ namespace SynthSundaySmackdown
                     DisplayUIMenu();
                     break;
                 default:
-                    Console.WriteLine("?SYNTAX ERROR");
-                    Console.WriteLine("Please enter a valid class..");
-                    TakeOneSecondBreak();
-                    Console.Clear();
+                    DisplaySyntaxError();
                     PullUpClassInfo();
                     break;
             }
         }
 
-        public void InsertClassText()
+        private void InsertClassText()
         {
             Console.WriteLine("#Grim Reaper");
             Console.WriteLine("#Battle Medic");
             Console.WriteLine("#Foot Soldier");
             Console.WriteLine("#Shadow Scout");
             Console.WriteLine();
+        }
+
+        private void DisplaySyntaxError()
+        {
+            Console.WriteLine("?SYNTAX ERROR");
+            Console.WriteLine("Please enter a valid input..");
+            TakeOneSecondBreak();
+            Console.Clear();
         }
 
         public void TakeOneSecondBreak()

@@ -11,7 +11,7 @@ namespace SynthSundaySmackdown
         public Battle_Medic()
         {
             this.name = "Battle Medic";
-            this.health = 200;
+            this.health = 175;
             this.attack = 15;
         }
     }

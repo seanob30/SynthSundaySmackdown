@@ -15,5 +15,15 @@ namespace SynthSundaySmackdown
         {
 
         }
+
+        public virtual void PrimaryAttack()
+        {
+
+        }
+
+        public virtual void SecondaryAttack()
+        {
+
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace SynthSundaySmackdown
         public Foot_Soldier()
         {
             this.name = "Foot Soldier";
-            this.health = 175;
+            this.health = 125;
             this.attack = 20;
         }
     }

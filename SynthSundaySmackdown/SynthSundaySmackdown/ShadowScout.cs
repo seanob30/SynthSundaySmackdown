@@ -11,7 +11,7 @@ namespace SynthSundaySmackdown
         public Shadow_Scout()
         {
             this.name = "Shadow Scout";
-            this.health = 110;
+            this.health = 90;
             this.attack = 30;
         }
     }
