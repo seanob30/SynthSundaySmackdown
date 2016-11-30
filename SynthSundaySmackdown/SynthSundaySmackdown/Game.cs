@@ -15,7 +15,8 @@ namespace SynthSundaySmackdown
             Console.WindowWidth = 75;
 
             WelcomeScreen();
-            ChooseClass();
+            DisplayUIMenu();
+            ChoosePlayerNames();
             //BeginSmackdown();
             //AcknowledgeWinner();
             //ShowRematchScreen();
@@ -28,16 +29,41 @@ namespace SynthSundaySmackdown
             Console.ReadKey();
             Console.Clear();
         }
-
-        private void ChooseClass()
+        public void DisplayUIMenu()
         {
-            Console.WriteLine("CHOOSE YOUR COMBATANT!");
-            Console.WriteLine("#Grim Reaper");
-            Console.WriteLine("#Battle Medic");
-            Console.WriteLine("#Foot Soldier");
-            Console.WriteLine("#Shadow Scout");
+            Console.WriteLine("                       **SYNTH SUNDAY SMACKDOWN**");
             Console.WriteLine();
-            Console.WriteLine("or type info for information on the classes..");
+            Console.WriteLine("Type 1 for PLAY NOW or type 2 for CLASS INFORMATION.");
+            Console.Write("What would you like to do?: ");
+            string menuinput = Console.ReadLine();
+            Console.Clear();
+
+            if (menuinput == "1")
+            {
+                playerOne = ChooseClass();
+                playerTwo = ChooseClass();
+            }
+            else if (menuinput == "2")
+            {
+                Console.Write("LOADING..");
+                TakeOneSecondBreak();
+                Console.Clear();
+                PullUpClassInfo();
+            }
+            else
+            {
+                Console.WriteLine("?SYNTAX ERROR");
+                Console.WriteLine("Please enter a valid input..");
+                TakeOneSecondBreak();
+                Console.Clear();
+            }
+        }
+
+        private Synth ChooseClass()
+        {
+            Synth player;
+            Console.WriteLine("CHOOSE YOUR COMBATANT!");
+            InsertClassText();
             Console.WriteLine();
             Console.Write("WHICH CLASS WOULD YOU LIKE TO BE?: ");
             string option = Console.ReadLine().ToLower();
@@ -46,40 +72,45 @@ namespace SynthSundaySmackdown
             switch(option)
             {
                 case ("grim reaper"):
-                    this.playerOne = new Grim_Reaper();
+                    player = new Grim_Reaper();
                     Console.Clear();
                     break;
                 case ("battle medic"):
-                    this.playerOne = new Battle_Medic();
+                    player = new Battle_Medic();
                     Console.Clear();
                     break;
                 case ("foot soldier"):
-                    this.playerOne = new Foot_Soldier();
+                    player = new Foot_Soldier();
                     Console.Clear();
                     break;
                 case ("shadow scout"):
-                    this.playerOne = new Shadow_Scout();
+                    player = new Shadow_Scout();
                     Console.Clear();
-                    break;
-                case ("info"):
-                    Console.Write("LOADING..");
-                    TakeOneSecondBreak();
-                    Console.Clear();
-                    PullUpClassInfo();
                     break;
                 default:
                     Console.WriteLine("?SYNTAX ERROR");
                     Console.WriteLine("Please enter a valid input..");
                     TakeOneSecondBreak();
                     Console.Clear();
-                    ChooseClass();
-                    break;
+                    return ChooseClass();
+                   
             }
+            return player;
+
+        }
+        private void ChoosePlayerNames()
+        {
+            Console.Write("PLAYER 1 NAME: ");
+            playerOne.name = Console.ReadLine();
+            Console.WriteLine();
+            Console.Write("PLAYER 2 NAME: ");
+            playerTwo.name = Console.ReadLine();
+            Console.Clear();
         }
 
         private void BeginSmackdown()
         {
-            while (playerOne.health >= 0)
+            while (playerOne.health >= 0 && playerTwo.health >= 0)
             {
 
             }
@@ -98,11 +129,7 @@ namespace SynthSundaySmackdown
         private void PullUpClassInfo()
         {
             Console.WriteLine("WHAT CLASS DO YOU WANT TO KNOW MORE ABOUT?");
-            Console.WriteLine("#Grim Reaper");
-            Console.WriteLine("#Battle Medic");
-            Console.WriteLine("#Foot Soldier");
-            Console.WriteLine("#Shadow Scout");
-            Console.WriteLine();
+            InsertClassText();
             Console.WriteLine("or type exit to go back..");
             Console.WriteLine();
             Console.Write("ENTER CLASS NAME FOR MORE INFORMATION: ");
@@ -145,7 +172,7 @@ namespace SynthSundaySmackdown
                     PullUpClassInfo();
                     break;
                 case "exit":
-                    ChooseClass();
+                    DisplayUIMenu();
                     break;
                 default:
                     Console.WriteLine("?SYNTAX ERROR");
@@ -155,6 +182,15 @@ namespace SynthSundaySmackdown
                     PullUpClassInfo();
                     break;
             }
+        }
+
+        public void InsertClassText()
+        {
+            Console.WriteLine("#Grim Reaper");
+            Console.WriteLine("#Battle Medic");
+            Console.WriteLine("#Foot Soldier");
+            Console.WriteLine("#Shadow Scout");
+            Console.WriteLine();
         }
 
         public void TakeOneSecondBreak()
