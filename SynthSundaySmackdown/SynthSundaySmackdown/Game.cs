@@ -179,6 +179,7 @@ namespace SynthSundaySmackdown
             switch (classInfo)
             {
                 case "grim reaper":
+                case "reaper":
                     Console.WriteLine("HEALTH: 125 Hit Points");
                     Console.WriteLine("ATTACK: 25 Damage");
                     Console.WriteLine("ABILITY: Can inflict double damage, but opponent inficts 1.5 damage.");
@@ -187,6 +188,7 @@ namespace SynthSundaySmackdown
                     DisplayClassInfo();
                     break;
                 case "battle medic":
+                case "medic":
                     Console.WriteLine("HEALTH: 175 Hit Points");
                     Console.WriteLine("ATTACK: 15 Damage");
                     Console.WriteLine("ABILITY: Heal 40 health points.");
@@ -195,6 +197,7 @@ namespace SynthSundaySmackdown
                     DisplayClassInfo();
                     break;
                 case "foot soldier":
+                case "soldier":
                     Console.WriteLine("HEALTH: 140 Hit Points");
                     Console.WriteLine("ATTACK: 20 Damage");
                     Console.WriteLine("ABILITY: Attack increases by 5, but health is subtracted by 25.");
@@ -203,6 +206,7 @@ namespace SynthSundaySmackdown
                     DisplayClassInfo();
                     break;
                 case "shadow scout":
+                case "scout":
                     Console.WriteLine("HEALTH: 95 Hit Points");
                     Console.WriteLine("ATTACK: 30 Damage");
                     Console.WriteLine("ABILITY: Goes \"invisible\" for one turn; inflicts 150% damage but loses");
@@ -212,6 +216,7 @@ namespace SynthSundaySmackdown
                     DisplayClassInfo();
                     break;
                 case "exit":
+                case "quit":
                     DisplayUIMenu();
                     break;
                 default:
