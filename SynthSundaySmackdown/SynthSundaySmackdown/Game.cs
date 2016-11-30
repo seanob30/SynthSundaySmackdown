@@ -114,14 +114,11 @@ namespace SynthSundaySmackdown
             {
                 Console.WriteLine("PLAYER 1 HEALTH:" + playerOne.health + "      " + "PLAYER 2 HEALTH:" + playerTwo.health);
                 Console.WriteLine();
-                Console.WriteLine(playerOne.name + " Press enter to attack..");
-                Console.ReadKey();
-                playerTwo.health -= playerOne.attack;
+                ChooseAttackPlayerOne();
                 Console.WriteLine();
-                Console.WriteLine(playerTwo.name + " Press enter to attack..");
-                Console.ReadKey();
-                playerOne.health -= playerTwo.attack;
+                ChooseAttackPlayerTwo();
                 Console.Clear();
+                TakeShortBreak();
             }
         }
 
@@ -182,9 +179,9 @@ namespace SynthSundaySmackdown
             switch (classInfo)
             {
                 case "grim reaper":
-                    Console.WriteLine("HEALTH: 110 Hit Points");
+                    Console.WriteLine("HEALTH: 125 Hit Points");
                     Console.WriteLine("ATTACK: 25 Damage");
-                    Console.WriteLine("ABILITY: Can inflict double damage, but then is incapacitated for a turn.");
+                    Console.WriteLine("ABILITY: Can inflict double damage, but opponent inficts 1.5 damage.");
                     Console.ReadKey();
                     Console.Clear();
                     PullUpClassInfo();
@@ -192,21 +189,21 @@ namespace SynthSundaySmackdown
                 case "battle medic":
                     Console.WriteLine("HEALTH: 175 Hit Points");
                     Console.WriteLine("ATTACK: 15 Damage");
-                    Console.WriteLine("ABILITY: Heal 30 health points.");
+                    Console.WriteLine("ABILITY: Heal 40 health points.");
                     Console.ReadKey();
                     Console.Clear();
                     PullUpClassInfo();
                     break;
                 case "foot soldier":
-                    Console.WriteLine("HEALTH: 125 Hit Points");
+                    Console.WriteLine("HEALTH: 140 Hit Points");
                     Console.WriteLine("ATTACK: 20 Damage");
-                    Console.WriteLine("ABILITY: Does not have an ability.");
+                    Console.WriteLine("ABILITY: Attack increases by 5, but health is subtracted by 25.");
                     Console.ReadKey();
                     Console.Clear();
                     PullUpClassInfo();
                     break;
                 case "shadow scout":
-                    Console.WriteLine("HEALTH: 90 Hit Points");
+                    Console.WriteLine("HEALTH: 95 Hit Points");
                     Console.WriteLine("ATTACK: 30 Damage");
                     Console.WriteLine("ABILITY: Goes \"invisible\" for one turn; inflict 150% damage the following");
                     Console.WriteLine("turn."); 
@@ -221,6 +218,44 @@ namespace SynthSundaySmackdown
                     DisplaySyntaxError();
                     PullUpClassInfo();
                     break;
+            }
+        }
+
+        public void ChooseAttackPlayerOne()
+        {
+            Console.WriteLine(playerOne.name + " Type attack or ability to fight..");
+            string playerOneInput = Console.ReadLine().ToLower();
+            if (playerOneInput == "attack")
+            {
+                playerOne.PrimaryAttack(playerTwo);
+            }
+            else if (playerOneInput == "ability")
+            {
+                playerOne.SecondaryAttack(playerTwo);
+            }
+            else
+            {
+                DisplaySyntaxError();
+                ChooseAttackPlayerOne();
+            }
+        }
+
+        public void ChooseAttackPlayerTwo()
+        {
+            Console.WriteLine(playerTwo.name + " Type attack or ability to fight..");
+            string playerTwoInput = Console.ReadLine().ToLower();
+            if (playerTwoInput == "attack")
+            {
+                playerTwo.PrimaryAttack(playerOne);
+            }
+            else if (playerTwoInput == "ability")
+            {
+                playerTwo.SecondaryAttack(playerOne);
+            }
+            else
+            {
+                DisplaySyntaxError();
+                ChooseAttackPlayerOne();
             }
         }
 
@@ -244,6 +279,11 @@ namespace SynthSundaySmackdown
         public void TakeOneSecondBreak()
         {
             System.Threading.Thread.Sleep(1500);
+        }
+
+        public void TakeShortBreak()
+        {
+            System.Threading.Thread.Sleep(900);
         }
     }
 }

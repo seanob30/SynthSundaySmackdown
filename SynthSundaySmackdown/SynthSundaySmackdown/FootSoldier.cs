@@ -11,8 +11,15 @@ namespace SynthSundaySmackdown
         public Foot_Soldier()
         {
             this.name = "Foot Soldier";
-            this.health = 125;
+            this.health = 140;
             this.attack = 20;
+        }
+
+        public override void SecondaryAttack(Synth synth)
+        {
+            this.health -= 25;
+            this.attack += 5;
+            PrimaryAttack(synth);
         }
     }
 }

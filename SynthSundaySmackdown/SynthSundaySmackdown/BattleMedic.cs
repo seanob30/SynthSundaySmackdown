@@ -14,5 +14,10 @@ namespace SynthSundaySmackdown
             this.health = 175;
             this.attack = 15;
         }
+
+        public override void SecondaryAttack(Synth synth)
+        {
+            this.health += 40;
+        }
     }
 }

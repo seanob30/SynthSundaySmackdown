@@ -11,8 +11,16 @@ namespace SynthSundaySmackdown
         public Shadow_Scout()
         {
             this.name = "Shadow Scout";
-            this.health = 90;
+            this.health = 95;
             this.attack = 30;
+        }
+
+        public override void SecondaryAttack(Synth synth)
+        {
+            this.health += synth.attack;
+            this.health -= 20;
+            synth.health -= this.attack + (this.attack / 2);
+
         }
     }
 }

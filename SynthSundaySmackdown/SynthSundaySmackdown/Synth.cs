@@ -15,13 +15,12 @@ namespace SynthSundaySmackdown
         {
 
         }
-
-        public virtual void PrimaryAttack()
+        public void PrimaryAttack(Synth synth)
         {
-
+            synth.health -= this.attack;
         }
 
-        public virtual void SecondaryAttack()
+        public virtual void SecondaryAttack(Synth synth)
         {
 
         }

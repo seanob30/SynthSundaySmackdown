@@ -12,8 +12,15 @@ namespace SynthSundaySmackdown
 
         {
             this.name = "Grim Reaper";
-            this.health = 110;
+            this.health = 125;
             this.attack = 25;
+        }
+
+        public override void SecondaryAttack(Synth synth)
+        {
+            synth.health -= (this.attack * 2);
+            this.health -= (synth.attack / 2);
+
         }
     }
 }
