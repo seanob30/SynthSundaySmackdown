@@ -8,7 +8,7 @@ namespace SynthSundaySmackdown
 {
     class Battle_Medic : Synth
     {
-        public Battle_Medic(string name, int health, int attack)
+        public Battle_Medic()
         {
             this.name = "Battle Medic";
             this.health = 200;

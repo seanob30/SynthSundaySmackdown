@@ -8,7 +8,7 @@ namespace SynthSundaySmackdown
 {
     class Grim_Reaper : Synth
     {
-        public Grim_Reaper(string name, int health, int attack)
+        public Grim_Reaper()
 
         {
             this.name = "Grim Reaper";

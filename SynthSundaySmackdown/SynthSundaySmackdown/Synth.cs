@@ -11,7 +11,6 @@ namespace SynthSundaySmackdown
         public string name;
         public int health;
         public int attack;
-
         public Synth()
         {
 
