@@ -14,15 +14,15 @@ namespace SynthSundaySmackdown
         {
             Console.WindowWidth = 75;
 
-            WelcomeScreen();
+            DisplayWelcomeScreen();
             DisplayUIMenu();
             ChoosePlayerNames();
             BeginSmackdown();
             AcknowledgeWinner();
-            ShowRematchScreen();
+            DisplayRematchScreen();
         }
 
-        private void WelcomeScreen()
+        private void DisplayWelcomeScreen()
         {
             Console.WriteLine("                  WELCOME TO SYNTH SUNDAY SMACKDOWN!");
             Console.WriteLine("                     Press any key to smackdown..");
@@ -35,20 +35,20 @@ namespace SynthSundaySmackdown
             Console.WriteLine();
             Console.WriteLine("Type 1 for PLAY NOW or type 2 for CLASS INFORMATION.");
             Console.Write("What would you like to do?: ");
-            string menuinput = Console.ReadLine();
+            string menuInput = Console.ReadLine();
             Console.Clear();
 
-            if (menuinput == "1")
+            if (menuInput == "1")
             {
                 playerOne = ChooseClass();
                 playerTwo = ChooseClass();
             }
-            else if (menuinput == "2")
+            else if (menuInput == "2")
             {
                 Console.Write("LOADING..");
                 TakeOneSecondBreak();
                 Console.Clear();
-                PullUpClassInfo();
+                DisplayClassInfo();
             }
             else
             {
@@ -143,30 +143,30 @@ namespace SynthSundaySmackdown
             Console.Clear();
         }
 
-        private void ShowRematchScreen()
+        private void DisplayRematchScreen()
         {
             Console.WriteLine("CONGRATULATIONS TO THE WINNER, WOULD YOU LIKE TO FIGHT AGAIN?");
             Console.WriteLine();
             Console.Write("Type rematch to fight again or exit to end the game: ");
-            string rematchinput = Console.ReadLine().ToLower();
+            string rematchInput = Console.ReadLine().ToLower();
 
-            if (rematchinput == "rematch")
+            if (rematchInput == "rematch")
             {
                 Console.Clear();
                 RunGame();
             }
-            else if (rematchinput == "exit")
+            else if (rematchInput == "exit")
             {
                 Environment.Exit(0);
             }
             else
             {
                 DisplaySyntaxError();
-                ShowRematchScreen();
+                DisplayRematchScreen();
             }
         }
 
-        private void PullUpClassInfo()
+        private void DisplayClassInfo()
         {
             Console.WriteLine("WHAT CLASS DO YOU WANT TO KNOW MORE ABOUT?");
             InsertClassText();
@@ -184,7 +184,7 @@ namespace SynthSundaySmackdown
                     Console.WriteLine("ABILITY: Can inflict double damage, but opponent inficts 1.5 damage.");
                     Console.ReadKey();
                     Console.Clear();
-                    PullUpClassInfo();
+                    DisplayClassInfo();
                     break;
                 case "battle medic":
                     Console.WriteLine("HEALTH: 175 Hit Points");
@@ -192,7 +192,7 @@ namespace SynthSundaySmackdown
                     Console.WriteLine("ABILITY: Heal 40 health points.");
                     Console.ReadKey();
                     Console.Clear();
-                    PullUpClassInfo();
+                    DisplayClassInfo();
                     break;
                 case "foot soldier":
                     Console.WriteLine("HEALTH: 140 Hit Points");
@@ -200,7 +200,7 @@ namespace SynthSundaySmackdown
                     Console.WriteLine("ABILITY: Attack increases by 5, but health is subtracted by 25.");
                     Console.ReadKey();
                     Console.Clear();
-                    PullUpClassInfo();
+                    DisplayClassInfo();
                     break;
                 case "shadow scout":
                     Console.WriteLine("HEALTH: 95 Hit Points");
@@ -209,14 +209,14 @@ namespace SynthSundaySmackdown
                     Console.WriteLine("20 health."); 
                     Console.ReadKey();
                     Console.Clear();
-                    PullUpClassInfo();
+                    DisplayClassInfo();
                     break;
                 case "exit":
                     DisplayUIMenu();
                     break;
                 default:
                     DisplaySyntaxError();
-                    PullUpClassInfo();
+                    DisplayClassInfo();
                     break;
             }
         } 
@@ -240,7 +240,7 @@ namespace SynthSundaySmackdown
 
         public void TakeOneSecondBreak()
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(1100);
         }
 
         public void TakeShortBreak()
