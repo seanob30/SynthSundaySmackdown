@@ -205,8 +205,8 @@ namespace SynthSundaySmackdown
                 case "shadow scout":
                     Console.WriteLine("HEALTH: 95 Hit Points");
                     Console.WriteLine("ATTACK: 30 Damage");
-                    Console.WriteLine("ABILITY: Goes \"invisible\" for one turn; inflict 150% damage the following");
-                    Console.WriteLine("turn."); 
+                    Console.WriteLine("ABILITY: Goes \"invisible\" for one turn; inflicts 150% damage but loses");
+                    Console.WriteLine("20 health."); 
                     Console.ReadKey();
                     Console.Clear();
                     PullUpClassInfo();
